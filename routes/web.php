@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Ctr1;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +14,7 @@ use App\Http\Controllers\Ctr1;
 |
 */
 
-Route::get('/mahesh', [Ctr1::class, 'func1']);
+Route::get('/admin', [AdminController::class, 'index']);
+Route::post('/admin', [AdminController::class, 'admin']);
 
 

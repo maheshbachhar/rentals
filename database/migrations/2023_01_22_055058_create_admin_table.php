@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('lname');
             $table->enum('gender',["M","F"])->nullable();
             $table->integer('age');
-            $table->string('contact_add',);
+            $table->string('contact_address');
             $table->string('admin_email');
-            $table->string('admin_pass');
+            $table->string('admin_password');
             $table->timestamps();
         });
     }
