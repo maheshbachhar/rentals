@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admin', function (Blueprint $table) {
-            $table->id('admin_id'); // admin_id
+            $table->id();
             $table->string('fname');
             $table->string('lname');
             $table->enum('gender',["M","F"])->nullable();

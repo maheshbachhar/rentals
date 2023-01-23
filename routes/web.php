@@ -14,7 +14,11 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::post('/admin', [AdminController::class, 'admin']);
+Route::get('/admin/add', [AdminController::class, 'add'])->name('admin.add');
+Route::get('/admin/delete/{id}',[AdminController::class, 'delete'])->name('admin.delete');
+Route::get('/admin/edit/{id}',[AdminController::class, 'edit'])->name('admin.edit');
+Route::post('/admin/update/{id}',[AdminController::class, 'update'])->name('admin.update');
+Route::get('/admin/view', [AdminController::class, 'view']);
+Route::post('/admin/add', [AdminController::class, 'admin']);
 
 

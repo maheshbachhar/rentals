@@ -8,10 +8,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-<form action="{{url('/')}}/admin" method="post">
+<form action="{{$url}}/add" method="post">
   @csrf
   <div class="container">
-    <h1 class="text-center">Admin</h1>
+    <h1 class="text-center">
+      {{$title}}
+    </h1>
     <div class="form-group">
       <label for="">Enter your first name</label>
       <input type="text" name="fname" class="form-control" id=""  placeholder="Enter your fname" aria-describedby="helpId"/>
@@ -23,9 +25,15 @@
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     <div class="form-group">
-      <p>What is your gender?</p>
-      <input type="radio" name="gender" value="male"> Male
-      <input type="radio" name="gender" value="female"> Female
+      <label for="gender">gender</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="gender" id="genderM" value="M">
+        <label for="genderM" class="form-check-label">Male</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" name="gender" id="genderF" value="F">
+        <label for="genderF" class="form-check-label">female</label>
+      </div>
     </div>
     <div class="form-group">
       <label for="">Age</label>
@@ -33,18 +41,18 @@
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     <div class="form-group">
-      <label for="">Contact_Add</label>
-      <input type="text" name="contact_add" class="form-control" id=""  placeholder="Enter your address" aria-describedby="helpId"/>
+      <label for="">Contact_Address</label>
+      <input type="text" name="contact_address" class="form-control" id=""  placeholder="Enter your address" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     <div class="form-group">
-      <label for="">Contact_email</label>
+      <label for="">Admin_email</label>
       <input type="email" name="admin_email" class="form-control" id="" aria-describedby="emailHelp" placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
-      <label for="">Admin_Pass</label>
-      <input type="password" name="admin_pass" class="form-control" id="" placeholder="Password">
+      <label for="">Admin_Password</label>
+      <input type="password" name="admin_password" class="form-control" id="" placeholder="Password">
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </div>
