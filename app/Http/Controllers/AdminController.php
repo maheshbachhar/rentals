@@ -46,8 +46,11 @@ class AdminController extends Controller
     public function delete($id)
     {
         $admin = Admin::find($id);
-        $admin->delete();
-        return redirect('admin-view');
+        if (!is_null($admin))
+        {
+            $admin->delete();
+        }
+        return redirect('admin/view');
         
     }
 

@@ -41,7 +41,7 @@
               <td>{{$admin->contact_address}}</td>
               <td>{{$admin->admin_email}}</td>
               <td>
-              <button class="btn btn-danger">Delete</button>
+              <a href="{{route('admin.delete', ['id' => $admin->id])}}"><button class="btn btn-danger">Delete</button>
               <button class="btn btn-primary">Edit</button>
               </td>
             </tr>
