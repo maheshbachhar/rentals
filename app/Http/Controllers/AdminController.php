@@ -10,9 +10,9 @@ class AdminController extends Controller
     public function add()
     {
         $url = url('/admin');
-        $title = "List of Admin";
-        $data = compact('url','title');
-        return view('admin ')->with($data);
+        $title = "Admin Registration";
+        $data = compact('url', 'title');
+        return view('admin')->with($data);
     }
 
     
@@ -57,13 +57,16 @@ class AdminController extends Controller
     public function edit($id)
     {
         $admin = Admin::find($id);
-        if(is_null($admin)){
+        if(is_null($admin))
+        {
             // not found
-            return redirect('admin');
-        }else{
+            return redirect('admin/view');
+        }
+        else
+        {
             $title = "Update Admin";
             $url = url('/admin/update') . "/" . $id;
-            $data = compact('admin','url','title');
+            $data = compact('admin', 'url', 'title');
             return view('admin')->with($data);
         }
     }
@@ -78,7 +81,7 @@ class AdminController extends Controller
         $admin->contact_address = $request['contact_address'];
         $admin->admin_email = $request['admin_email'];
         $admin->save();
-        return redirect('admin');
+        return redirect('admin/view');
     }
 
 }
