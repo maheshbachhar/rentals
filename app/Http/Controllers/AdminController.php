@@ -67,7 +67,7 @@ class AdminController extends Controller
             $title = "Update Admin";
             $url = url('/admin/update') . "/" . $id;
             $data = compact('admin', 'url', 'title');
-            return view('admin')->with($data);
+            return view('adminform')->with($data);
         }
     }
 
