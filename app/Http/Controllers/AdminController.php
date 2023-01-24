@@ -12,7 +12,7 @@ class AdminController extends Controller
         $url = url('/admin');
         $title = "Admin Registration";
         $data = compact('url', 'title');
-        return view('adminform')->with($data);
+        return view('form')->with($data);
     }
 
     
