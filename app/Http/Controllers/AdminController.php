@@ -4,15 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use Twilio\Rest\Client;
 
 class AdminController extends Controller
 {
-    public function add()
+    public function index()
+    {
+        $this->sendMessage('test','+9779806879263');
+    }
+    
+    public function adminadd()
     {
         $url = url('/admin');
         $title = "Admin Registration";
         $data = compact('url', 'title');
-        return view('form')->with($data);
+        return view('adminadminform')->with($data);
     }
 
     
@@ -36,14 +42,14 @@ class AdminController extends Controller
         return redirect('/admin/view');
         // ------------
     }
-    public function view()
+    public function adminview()
     {
         $admin = Admin::all();
         $data = compact('admin');
         return view('admin-view')->with($data);
     }
 
-    public function delete($id)
+    public function admindelete($id)
     {
         $admin = Admin::find($id);
         if (!is_null($admin))
@@ -54,7 +60,7 @@ class AdminController extends Controller
         
     }
 
-    public function edit($id)
+    public function adminedit($id)
     {
         $admin = Admin::find($id);
         if(is_null($admin))
@@ -71,7 +77,7 @@ class AdminController extends Controller
         }
     }
 
-    public function update($id, Request $request)
+    public function adminupdate($id, Request $request)
     {
         $admin = Admin::find($id);
         $admin->fname = $request['fname'];
@@ -82,6 +88,22 @@ class AdminController extends Controller
         $admin->admin_email = $request['admin_email'];
         $admin->save();
         return redirect('admin/view');
+    }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
+
+
+    private function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, 
+                ['from' => $twilio_number, 'body' => $message] );
     }
 
 }

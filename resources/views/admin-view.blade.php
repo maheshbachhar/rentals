@@ -1,3 +1,5 @@
+@extends('welcome')
+@section('content')
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,8 +13,7 @@
   </head>
   <body>
       <div class="container">
-      <a href="{{route('admin.add')}}">
-      <button class="btn btn-primary d-inline-block m-2 float-right">add</button>
+      <a href="{{route('admin.add')}}"><button class="btn btn-primary d-inline-block m-2 float-right">add</button></a>
         <table class="table">
           <thead>
             <tr>
@@ -50,3 +51,4 @@
       </div>
   </body>
 </html>
+@endsection
