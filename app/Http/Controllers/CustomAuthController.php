@@ -5,9 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Twilio\Rest\Client;
 
 class CustomAuthController extends Controller
 {
+    public function showOtpForm()
+    {
+        $this->sendMessage('test','+9779806879263');
+    }
+    
     public function showLoginForm()
     {
         return view(view:'customAuth.login');
@@ -33,6 +39,7 @@ class CustomAuthController extends Controller
                 $message = 'Your OTP is'. $otp;
                 $this->sendMessage($message,'+9779806879263');
                 return view('verify', compact('user_id'));
+                
             }
             return redirect()->back();
         }
@@ -80,6 +87,8 @@ class CustomAuthController extends Controller
         }
     }
 
+    
+
     public function verifyOtp(Request $request, $id)
     {
         if(!$id){
@@ -97,10 +106,10 @@ class CustomAuthController extends Controller
     private function sendMessage($message, $recipients)
     {
         $sid = "AC754e3f4b7b461402dc2f3daa4ee83fb2";
-        $token = "3b1f04d993f5a5b6f752ca0551dac8e2";
+        $token = "b57839dc61fe7dddba98720a6f898140";
         $twilio = new Client($sid, $token);
-        $client = new Client($account_sid, $auth_token);
-        $message = $twilio->messages->create("+9779806879263", array("messagingServiceSid" => "MG5be960204ab5a9d350545ce8b0176996", "body" => $message ));
+        $client = new Client($sid, $token);
+        $message = $twilio->messages->create("+9779806879263", array("messagingServiceSid" => "MG297979b56a8da30aeacc68d265ca9877", "body" => $message ));
     }
     
 }

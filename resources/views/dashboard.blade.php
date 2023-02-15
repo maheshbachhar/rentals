@@ -1,5 +1,5 @@
 @extends('welcome')
-@section('contents')
+@section('content')
 <div class="container-fluid">
 
                     <!-- Page Heading -->

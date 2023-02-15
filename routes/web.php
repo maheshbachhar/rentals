@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BikesController;
+use App\Http\Controllers\CarsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\Hash;
@@ -32,18 +33,31 @@ Route::get('/admin/delete/{id}',[AdminController::class, 'admindelete'])->name('
 Route::get('/admin/edit/{id}',[AdminController::class, 'adminedit'])->name('admin.edit');
 Route::post('/admin/update/{id}',[AdminController::class, 'adminupdate'])->name('admin.update');
 Route::get('/admin/view', [AdminController::class, 'adminview'])->name('admin.view');
+
 Route::post('/admin/add', [AdminController::class, 'admin']);
 
-Route::get('/bikes/add', [BikesController::class, 'bikesadd'])->name('bikes.add');
-Route::get('/bikes/delete/{id}',[BikesController::class, 'bikesdelete'])->name('bikes.delete');
-Route::get('/bikes/edit/{id}',[BikesController::class, 'bikesedit'])->name('bikes.edit');
-Route::post('/bikes/update/{id}',[BikesController::class, 'bikesupdate'])->name('bikes.update');
-Route::get('/bikes/view', [BikesController::class, 'bikesview'])->name('bikes.view');
-Route::post('/bikes/add', [BikesController::class, 'bikes']);
+//Bikes
+Route::get('/bikes/add', [\App\Http\Controllers\BikesController::class, 'bikesadd'])->name('bikes.add');
+Route::get('/bikes/delete/{id}',[\App\Http\Controllers\BikesController::class, 'bikesdelete'])->name('bikes.delete');
+Route::get('/bikes/edit/{id}',[\App\Http\Controllers\BikesController::class, 'bikesedit'])->name('bikes.edit');
+Route::post('/bikes/update/{id}',[\App\Http\Controllers\BikesController::class, 'bikesupdate'])->name('bikes.update');
+Route::get('/bikes/view', [\App\Http\Controllers\BikesController::class, 'bikesview'])->name('bikes.view');
+Route::post('/bikes/add', [\App\Http\Controllers\BikesController::class, 'bikes']);
 
 
-Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard',[BikesController::class, 'dashboard'])->name('dashboard');
 
+
+//Cars
+Route::get('/cars/add', [CarsController::class, 'carsadd'])->name('cars.add');
+Route::get('/cars/delete/{id}',[CarsController::class, 'carsdelete'])->name('cars.delete');
+Route::get('/cars/edit/{id}',[CarsController::class, 'carsedit'])->name('cars.edit');
+Route::post('/cars/update/{id}',[CarsController::class, 'carsupdate'])->name('cars.update');
+Route::get('/cars/view', [CarsController::class, 'carsview'])->name('cars.view');
+Route::post('/cars/add', [CarsController::class, 'cars']);
+
+
+Route::get('/dashboard',[CarsController::class, 'dashboard'])->name('dashboard');
 
 
 Auth::routes();

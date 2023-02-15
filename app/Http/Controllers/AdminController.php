@@ -13,12 +13,10 @@ class AdminController extends Controller
         $this->sendMessage('test','+9779806879263');
     }
     
-    public function adminadd()
+    public function adminadd(Request $request)
     {
-        $url = url('/admin');
-        $title = "Admin Registration";
-        $data = compact('url', 'title');
-        return view('adminadminform')->with($data);
+        
+        return view('adminaddform');
     }
 
     
@@ -70,10 +68,9 @@ class AdminController extends Controller
         }
         else
         {
-            $title = "Update Admin";
             $url = url('/admin/update') . "/" . $id;
-            $data = compact('admin', 'url', 'title');
-            return view('adminform')->with($data);
+            $data = compact('admin' ,'url');
+            return view('admineditform')->with($data);
         }
     }
 

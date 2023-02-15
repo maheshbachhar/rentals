@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Bikes;
+use Twilio\Rest\Client;
 
 class BikesController extends Controller
 {
-    public function bikesadd()
+    public function index()
     {
-        $url = url('/bikes');
-        $title = "Bikes Registration";
-        $data = compact('url', 'title');
-        return view('bikesform')->with($data);
+        $this->sendMessage('test','+9779806879263');
+    }
+    
+    public function bikesadd(Request $request)
+    {
+        
+        return view('bikesaddform');
     }
 
     
@@ -24,13 +28,12 @@ class BikesController extends Controller
 
         // insert query
         $bikes = new Bikes;
-        $bikes->fname = $request['fname'];
-        $bikes->lname = $request['lname'];
-        $bikes->gender = $request['gender'];
-        $bikes->age = $request['age'];
-        $bikes->contact_address = $request['contact_address'];
-        $bikes->admin_email = $request['admin_email'];
-        $bikes->admin_password = md5($request['admin_password']);
+        
+        $bikes->bike_number = $request['bike_number'];
+        $bikes->bike_model = $request['bike_model'];
+        $bikes->bike_status = $request['bike_status'];
+        $bikes->rent_price = $request['rent_price'];
+        $bikes->driver_id = $request['driver_id'];
         $bikes->save();
 
         return redirect('/bikes/view');
@@ -64,22 +67,21 @@ class BikesController extends Controller
         }
         else
         {
-            $title = "Update Bikes";
             $url = url('/bikes/update') . "/" . $id;
-            $data = compact('bikes', 'url', 'title');
-            return view('bikesform')->with($data);
+            $data = compact('bikes' ,'url');
+            return view('bikeseditform')->with($data);
         }
     }
 
     public function bikesupdate($id, Request $request)
     {
         $bikes = Bikes::find($id);
-        $bikes->fname = $request['fname'];
-        $bikes->lname = $request['lname'];
-        $bikes->gender = $request['gender'];
-        $bikes->age = $request['age'];
-        $bikes->contact_address = $request['contact_address'];
-        $bikes->admin_email = $request['admin_email'];
+        
+        $bikes->bike_number = $request['bike_number'];
+        $bikes->bike_model = $request['bike_model'];
+        $bikes->bike_status = $request['bike_status'];
+        $bikes->rent_price = $request['rent_price'];
+        $bikes->driver_id = $request['driver_id'];
         $bikes->save();
         return redirect('bikes/view');
     }
@@ -89,4 +91,14 @@ class BikesController extends Controller
         return view('dashboard');
     }
 
+
+    private function sendMessage($message, $recipients)
+    {
+        $account_sid = getenv("TWILIO_SID");
+        $auth_token = getenv("TWILIO_AUTH_TOKEN");
+        $twilio_number = getenv("TWILIO_NUMBER");
+        $client = new Client($account_sid, $auth_token);
+        $client->messages->create($recipients, 
+                ['from' => $twilio_number, 'body' => $message] );
+    }
 }

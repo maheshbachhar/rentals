@@ -17,7 +17,8 @@
         <table class="table">
           <thead>
             <tr>
-              <th>fname</th>
+            <th>id</th>   
+            <th>fname</th>
               <th>lname</th>
               <th>gender</th>
               <th>age</th>
@@ -28,6 +29,7 @@
           <tbody>
             @foreach ($admin as $admin)
             <tr>
+              <td>{{$admin->id}}</td>  
               <td>{{$admin->fname}}</td>
               <td>{{$admin->lname}}</td>
               <td>

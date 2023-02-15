@@ -11,29 +11,29 @@
   </head>
   <body>
       <div class="container">
-      <a href="{{route('bikes.add')}}">
+      <a href="{{route('cars.add')}}">
       <button class="btn btn-primary d-inline-block m-2 float-right">add</button>
         <table class="table">
           <thead>
             <tr>
             <th>id</th>  
-            <th>bike_number</th>
-              <th>bike_model</th>
+            <th>car_number</th>
+              <th>car_model</th>
               <th>rent_price</th>
               <th>driver_id</th>
-              <th>bike_status</th>
+              <th>car_status</th>
             </tr>
           </thead>
           <tbody>
-            @foreach ($bikes as $bikes)
+            @foreach ($cars as $cars)
             <tr>
-            <td>{{$bikes->id}}</td>
-            <td>{{$bikes->bike_number}}</td>
-              <td>{{$bikes->bike_model}}</td>
-              <td>{{$bikes->rent_price}}</td>
-              <td>{{$bikes->driver_id}}</td>
+            <td>{{$cars->id}}</td>
+            <td>{{$cars->car_number}}</td>
+              <td>{{$cars->car_model}}</td>
+              <td>{{$cars->rent_price}}</td>
+              <td>{{$cars->driver_id}}</td>
               <td>
-                @if($bikes->bike_status == "1")
+                @if($cars->car_status == "1")
                 <button class="btn">
                   <span class="badge badge-primary">Active</span>
                 </button>
@@ -45,8 +45,8 @@
               </td>
               
               <td>
-              <a href="{{route('bikes.delete', ['id' => $bikes->id])}}"><button class="btn btn-danger">Delete</button></a>
-              <a href="{{route('bikes.edit', ['id' => $bikes->id])}}"><button class="btn btn-primary">Edit</button></a>
+              <a href="{{route('cars.delete', ['id' => $cars->id])}}"><button class="btn btn-danger">Delete</button></a>
+              <a href="{{route('cars.edit', ['id' => $cars->id])}}"><button class="btn btn-primary">Edit</button></a>
               </td>
             </tr>
             @endforeach   

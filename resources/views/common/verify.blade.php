@@ -51,8 +51,8 @@
                                         
                                         
                                         <input type="submit" class="btn btn-primary btn-user btn-block" name="submit" value="Login">
-                                            
-                                        
+                                            Login
+                                        </a>
                                         
                                     </form>
                                     
