@@ -38,6 +38,9 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item" href="{{route('admin.add')}}">Admin Form</a>
                         <a class="collapse-item" href="{{route('bikes.add')}}">Bikes Form</a>
+                        <a class="collapse-item" href="{{route('cars.add')}}">Cars Form</a>
+                        <a class="collapse-item" href="{{route('rentals.add')}}">Rentals Form</a>
+                        <a class="collapse-item" href="{{route('customer.add')}}">Customer Form</a>
                     </div>
                 </div>
             </li>
@@ -55,7 +58,9 @@
                         <h6 class="collapse-header">Custom Data:</h6>
                         <a class="collapse-item" href="{{route('admin.view')}}">Show Admin Data</a>
                         <a class="collapse-item" href="{{route('bikes.view')}}">Show Bikes Data</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <a class="collapse-item" href="{{route('cars.view')}}">Show Cars Data</a>
+                        <a class="collapse-item" href="{{route('rentals.view')}}">Show Rentals Data</a>
+                        <a class="collapse-item" href="{{route('customer.view')}}">Show Customer Data</a>
                         <a class="collapse-item" href="utilities-other.html">Other</a>
                     </div>
                 </div>

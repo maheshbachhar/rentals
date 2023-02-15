@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('customer', function (Blueprint $table) {
-            $table->id('customer_id'); // customer_id
-            $table->string('fname');
-            $table->string('lname');
-            $table->enum('gender',["M","F"]);
-            $table->string('contact_add');
-            $table->string('cust_email');
-            $table->string('cust_pass');
+        Schema::create('rentals', function (Blueprint $table) {
+            $table->id();
+            $table->integer('rental_number');
+            $table->string('rent_date');
+            $table->string('arrive_date');
+            $table->string('destination');
+            $table->string('return_date');
+            $table->integer('payment');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer');
+        Schema::dropIfExists('rentals');
     }
 };

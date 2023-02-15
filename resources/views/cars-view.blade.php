@@ -11,8 +11,7 @@
   </head>
   <body>
       <div class="container">
-      <a href="{{route('cars.add')}}">
-      <button class="btn btn-primary d-inline-block m-2 float-right">add</button>
+      <a href="{{route('cars.add')}}"><button class="btn btn-primary d-inline-block m-2 float-right">add</button></a>
         <table class="table">
           <thead>
             <tr>

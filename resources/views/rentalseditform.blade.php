@@ -14,45 +14,51 @@
   @csrf
   <div class="container">
     <h1 class="text-center">
-      Bikes Registration
+      Rentals Registration
     </h1>
     
     <div class="row">
     <div class="form-group">
-      <label for="">Enter Bike Number</label>
-      <input type="text" name="bike_number" class="form-control" id="" value="{{$bikes->bike_number}}" placeholder="Enter bike number" aria-describedby="helpId"/>
+      <label for="">Enter Rental Number</label>
+      <input type="text" name="rental_number" class="form-control" id="" value="{{$rentals->rental_number}}" placeholder="Enter rental number" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     </div>  
     <div class="row">
     <div class="form-group">
-      <label for="">Enter Bike Model</label>
-      <input type="text" name="bike_model" class="form-control" id="" value="{{$bikes->bike_model}}" placeholder="Enter bike model" aria-describedby="helpId"/>
+      <label for="">Enter Rent Date</label>
+      <input type="text" name="rent_date" class="form-control" id="" value="{{$rentals->rent_date}}" placeholder="Enter rent date" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     </div> 
     <div class="row">
     <div class="form-group">
-      <label for="">Enter Bike Status</label>
-      <input type="text" name="bike_status" class="form-control" id="" value="{{$bikes->bike_status}}" placeholder="Enter bike status" aria-describedby="helpId"/>
+      <label for="">Enter Arrive Date</label>
+      <input type="text" name="arrive_date" class="form-control" id="" value="{{$rentals->arrive_date}}" placeholder="Enter arrive date" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     </div>
     <div class="row">
     <div class="form-group">
-      <label for="">Enter Rent Price</label>
-      <input type="text" name="rent_price" class="form-control" id="" value="{{$bikes->rent_price}}" placeholder="Enter rent price" aria-describedby="helpId"/>
+      <label for="">Enter Destination</label>
+      <input type="text" name="destination" class="form-control" id="" value="{{$rentals->destination}}" placeholder="Enter destination" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     </div>
     <div class="row">
     <div class="form-group">
-      <label for="">Enter Driver Id</label>
-      <input type="text" name="driver_id" class="form-control" id="" value="{{$bikes->driver_id}}" placeholder="Enter driver id" aria-describedby="helpId"/>
+      <label for="">Enter Return Date</label>
+      <input type="text" name="return_date" class="form-control" id="" value="{{$rentals->return_date}}" placeholder="Enter return date" aria-describedby="helpId"/>
       {{-- <small id="helpId" class="text-muted">Help text</small> --}}
     </div>
     </div>
-    
+    <div class="row">
+    <div class="form-group">
+      <label for="">Enter Payment</label>
+      <input type="text" name="payment" class="form-control" id="" value="{{$rentals->payment}}" placeholder="Enter payment" aria-describedby="helpId"/>
+      {{-- <small id="helpId" class="text-muted">Help text</small> --}}
+    </div>
+    </div>
     <button type="submit" class="btn btn-primary">Update</button>
   </div>
 </form>

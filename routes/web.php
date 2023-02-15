@@ -5,6 +5,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BikesController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\RentalsController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\Hash;
@@ -24,6 +26,11 @@ use App\Http\Controllers\Hash;
 Route::get('/', function() {
     $admin = \App\Models\Admin::all();
     return view('bike&car_rentals', compact('admin'));
+});
+
+Route::get('/', function() {
+    $bikes = \App\Models\Bikes::all();
+    return view('bike&car_rentals', compact('bikes'));
 });
 
 Route::get('/index', [UserController::class, 'index'])->name('index');
@@ -58,6 +65,31 @@ Route::post('/cars/add', [CarsController::class, 'cars']);
 
 
 Route::get('/dashboard',[CarsController::class, 'dashboard'])->name('dashboard');
+
+
+//Rentals
+Route::get('/rentals/add', [RentalsController::class, 'rentalsadd'])->name('rentals.add');
+Route::get('/rentals/delete/{id}',[RentalsController::class, 'rentalsdelete'])->name('rentals.delete');
+Route::get('/rentals/edit/{id}',[RentalsController::class, 'rentalsedit'])->name('rentals.edit');
+Route::post('/rentals/update/{id}',[RentalsController::class, 'rentalsupdate'])->name('rentals.update');
+Route::get('/rentals/view', [RentalsController::class, 'rentalsview'])->name('rentals.view');
+Route::post('/rentals/add', [RentalsController::class, 'rentals']);
+
+
+Route::get('/dashboard',[RentalsController::class, 'dashboard'])->name('dashboard');
+
+
+
+//Customer
+Route::get('/customer/add', [CustomerController::class, 'customeradd'])->name('customer.add');
+Route::get('/customer/delete/{id}',[CustomerController::class, 'customerdelete'])->name('customer.delete');
+Route::get('/customer/edit/{id}',[CustomerController::class, 'customeredit'])->name('customer.edit');
+Route::post('/customer/update/{id}',[CustomerController::class, 'customerupdate'])->name('customer.update');
+Route::get('/customer/view', [CustomerController::class, 'customerview'])->name('customer.view');
+Route::post('/customer/add', [CustomerController::class, 'customer']);
+
+
+Route::get('/dashboard',[CustomerController::class, 'dashboard'])->name('dashboard');
 
 
 Auth::routes();
