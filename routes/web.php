@@ -5,8 +5,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BikesController;
 use App\Http\Controllers\CarsController;
+use App\Http\Controllers\DriverController;
 use App\Http\Controllers\RentalsController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\Hash;
@@ -67,6 +70,18 @@ Route::post('/cars/add', [CarsController::class, 'cars']);
 Route::get('/dashboard',[CarsController::class, 'dashboard'])->name('dashboard');
 
 
+//Driver
+Route::get('/driver/add', [DriverController::class, 'driveradd'])->name('driver.add');
+Route::get('/driver/delete/{id}',[DriverController::class, 'driverdelete'])->name('driver.delete');
+Route::get('/driver/edit/{id}',[DriverController::class, 'driveredit'])->name('driver.edit');
+Route::post('/driver/update/{id}',[DriverController::class, 'driverupdate'])->name('driver.update');
+Route::get('/driver/view', [DriverController::class, 'driverview'])->name('driver.view');
+Route::post('/driver/add', [DriverController::class, 'driver']);
+
+
+Route::get('/dashboard',[DriverController::class, 'dashboard'])->name('dashboard');
+
+
 //Rentals
 Route::get('/rentals/add', [RentalsController::class, 'rentalsadd'])->name('rentals.add');
 Route::get('/rentals/delete/{id}',[RentalsController::class, 'rentalsdelete'])->name('rentals.delete');
@@ -90,6 +105,30 @@ Route::post('/customer/add', [CustomerController::class, 'customer']);
 
 
 Route::get('/dashboard',[CustomerController::class, 'dashboard'])->name('dashboard');
+
+
+//Transaction
+Route::get('/transaction/add', [TransactionController::class, 'transactionadd'])->name('transaction.add');
+Route::get('/transaction/delete/{id}',[TransactionController::class, 'transactiondelete'])->name('transaction.delete');
+Route::get('/transaction/edit/{id}',[TransactionController::class, 'transactionedit'])->name('transaction.edit');
+Route::post('/transaction/update/{id}',[TransactionController::class, 'transactionupdate'])->name('transaction.update');
+Route::get('/transaction/view', [TransactionController::class, 'transactionview'])->name('transaction.view');
+Route::post('/transaction/add', [TransactionController::class, 'transaction']);
+
+
+Route::get('/dashboard',[TransactionController::class, 'dashboard'])->name('dashboard');
+
+
+//Reports
+Route::get('/reports/add', [ReportsController::class, 'reportsadd'])->name('reports.add');
+Route::get('/reports/delete/{id}',[ReportsController::class, 'reportsdelete'])->name('reports.delete');
+Route::get('/reports/edit/{id}',[ReportsController::class, 'reportsedit'])->name('reports.edit');
+Route::post('/reports/update/{id}',[ReportsController::class, 'reportsupdate'])->name('reports.update');
+Route::get('/reports/view', [ReportsController::class, 'reportsview'])->name('reports.view');
+Route::post('/reports/add', [ReportsController::class, 'reports']);
+
+
+Route::get('/dashboard',[ReportsController::class, 'dashboard'])->name('dashboard');
 
 
 Auth::routes();

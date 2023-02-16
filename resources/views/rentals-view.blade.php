@@ -1,3 +1,5 @@
+@extends('welcome')
+@section('content')
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,6 +13,9 @@
   </head>
   <body>
       <div class="container">
+      <h1 class="text-center">
+          All Rentals Details
+        </h1>
       <a href="{{route('rentals.add')}}">
       <button class="btn btn-primary d-inline-block m-2 float-right">add</button>
         <table class="table">
@@ -47,3 +52,4 @@
       </div>
   </body>
 </html>
+@endsection

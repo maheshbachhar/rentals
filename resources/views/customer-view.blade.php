@@ -13,6 +13,9 @@
   </head>
   <body>
       <div class="container">
+      <h1 class="text-center">
+          All Customer Details
+        </h1>
       <a href="{{route('customer.add')}}"><button class="btn btn-primary d-inline-block m-2 float-right">add</button></a>
         <table class="table">
           <thead>
